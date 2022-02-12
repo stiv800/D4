@@ -1,0 +1,21 @@
+{% extends "flatpages/default.html" %}
+
+{% load custom_filters %}
+
+{% block css %}
+{% load static %}
+<link href="{% static '/css/styles2.css' %}" rel="stylesheet" />
+{% endblock css %}
+
+{% block content %}
+{% if post.title %}
+<h1>{{ post.title }}</h1>
+<date>{{ post.dateCreation|date:'d-m-Y H:i' }}</date>
+<p>{{ post.text|cenzor }}</p>
+{% else %}
+    <h1>Новость без заголовка....</h1>
+    <p>Мы вам это не покажем...</p>
+{% endif %}
+<a href="{% url 'post_update' post.id %}"><u> Редактировать </u></a><br>
+<a href="{% url 'post_delete' post.id %}"><u> Удалить </u></a>
+{% endblock content%}
