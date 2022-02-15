@@ -77,6 +77,11 @@ class PostCreateView(CreateView):
 class PostUpdateView(UpdateView):
     template_name = 'post_create.html'
     form_class = PostsForm
+
+
+    def get_object(self, **kwargs):
+        id = self.kwargs.get('pk')
+        return Post.objects.get(pk=id)
  
  
 class PostDeleteView(DeleteView):

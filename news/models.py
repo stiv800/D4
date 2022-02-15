@@ -73,5 +73,3 @@ class Comment(models.Model):
         self.commentRating -= 1
         self.save()
 
-
-
